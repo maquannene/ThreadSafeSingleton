@@ -15,7 +15,7 @@
 但是注意：
 虽然是并发队列，为了保证写 和 读操作的有序性，可以并发的读，但是绝对写的时候必须保证串行。
 
-*读操作如下：
+* 读操作如下：
 ```objc
 - (NSString *)name {
     __block NSString *mName = nil;
@@ -27,7 +27,7 @@
 ```
 在maquanQueue并发队列中，同步并发读取数据。
 
-*写操作如下：
+* 写操作如下：
 ```
 - (void)setName:(NSString *)name {
     dispatch_barrier_async(self.maquanQueue, ^{
