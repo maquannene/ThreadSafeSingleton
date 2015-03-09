@@ -34,7 +34,6 @@
         if (name != _name) {
             [_name release];
             _name = [name retain];
-            sleep(3);
         }
     });
 }
