@@ -39,6 +39,15 @@ static MaquanSingleton *shareMaquan = nil;
     return shareMaquan;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 //  读操作在maquanQueue中并发执行。
 - (NSString *)name {
     __block NSString *mName = nil;
@@ -61,7 +70,7 @@ static MaquanSingleton *shareMaquan = nil;
 }
 
 //  重写方法
-//  防止被创建
+//  防止防止生成新的地址， 不管shareMaquan 还是 alloc都会跑这里申请内存，但是内存只申请一次。永远无法被创建。
 + (id)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
